@@ -43,6 +43,18 @@ var resetButton, musicButton;
    }
  */
 
+function loadImages() {
+  backImage = loadImage("assets/img/back.png");
+  boltImage = loadImage("assets/img/bolt.png");
+  cloudImage = loadImage("assets/img/cloud.png");
+  sunImage = loadImage("assets/img/sun.png");
+  moonImage = loadImage("assets/img/moon.png");
+  smileyImage = loadImage("assets/img/smiley.png");
+  heartImage = loadImage("assets/img/heart.png");
+  transitionImage1 = loadImage("assets/img/transitionImage1.png");
+  transitionImage2 = loadImage("assets/img/transitionImage2.png");
+  transitionImage3 = loadImage("assets/img/transitionImage3.png");
+}
 
 /*
  * function loadAnimations()
@@ -55,7 +67,18 @@ var resetButton, musicButton;
      myAnimation = loadAnimation(img1, img2, img3, img4);
    }
  */
-
+function loadAnimation(){
+  backImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  boltImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  cloudImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  sunImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  moonImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  smileyImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  heartImage = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  transitionImage1 = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  transitionImage2 = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+  transitionImage3 = loadImage(backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage, transitionImage1, transitionImage2, transitionImage3);
+}
 
 /*
  * function loadSounds()
@@ -74,9 +97,12 @@ var resetButton, musicButton;
  * Called automatically by p5.play. Loads all assets for your game (e.g.,
  * images, sounds) before p5 calls setup(), to ensure that the game does not
  * begin running until the assets are loaded and ready. Therefore, this function
- * is essentially a "pre-setup" function. 
+ * is essentially a "pre-setup" function.
  */
-
+function preload() {
+  loadImages();
+  loadAnimation();
+}
 
 /*
  * function setup()
@@ -84,7 +110,18 @@ var resetButton, musicButton;
  * Therefore, assets are assumed to have been loaded and ready before this
  * function is called.
  */
+function setup() {
+  gameScreen = createCanvas(790, 370);
+  gameScreen.parent("#game-screen");
+  spriteWidth = 120;
+  spriteHeight = 180;
+  spriteX = 70;
+  spriteY = 95;
+  imageArray = [backImage, boltImage, cloudImage, sunImage, moonImage, smileyImage, heartImage;
+  transitionImage1, transitionImage2, transitionImage3];
 
+  resizeImages();
+}
 
 /*
  * function draw()
@@ -120,7 +157,11 @@ var resetButton, musicButton;
  * Example of resizing one image:
    image.resize(40, 50);
  */
-
+ function resizeImage(){
+   for(var i = 0; < imageArray.length; i++) {
+     imageArray [i].resize(spriteWidth, spriteHeight);
+   }
+ }
 
 /*
  * function createSprites()
